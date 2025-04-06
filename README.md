@@ -2,8 +2,6 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-## Overview
-
 `dash-server-file-browser` provides a simple AIO component for [Dash](https://github.com/plotly/dash) applications to browse directories and files on the server.
 The componennt is implemented as a `Modal` component of [dash-bootstrap-components](https://github.com/facultyai/dash-bootstrap-components).
 
@@ -36,7 +34,7 @@ component and handle the selected directory.
 
 ## Contributing
 
-Contributions are welcome! If you encounter any issues or have feature requests, please open an issue or submit a pull request on the [GitHub repository](https://github.com/Zoraiyo/dash-server-file-browser).
+Contributions are welcome! If you encounter any issues or have feature requests, please open an [issue](https://github.com/Zoraiyo/dash-server-file-browser/issues) or submit a [pull request](https://github.com/Zoraiyo/dash-server-file-browser/pulls).
 
 ## License
 
