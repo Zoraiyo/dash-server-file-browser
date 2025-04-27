@@ -175,13 +175,13 @@ class FileBrowserAIO(html.Div):
         modal_close_button_props=None,
     ):
         # Merge user-supplied properties into the default properties
-        modal_props = {
+        working_modal_props = {
             "is_open": False,
             "backdrop": False,
             "size": "lg",
             "scrollable": True,
         }
-        modal_props.update(modal_props if modal_props else {})
+        working_modal_props.update(modal_props if modal_props else {})
 
         modal_header_props = modal_header_props if modal_header_props else {}
         modal_title_props = modal_title_props if modal_title_props else {}
@@ -260,7 +260,7 @@ class FileBrowserAIO(html.Div):
                     ),
                 ],
                 id=self.IDs.modal(aio_id),
-                **modal_props,
+                **working_modal_props,
             )
         )
 
