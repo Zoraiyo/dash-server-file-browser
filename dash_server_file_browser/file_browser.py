@@ -6,6 +6,8 @@ import dash_bootstrap_components as dbc
 from dash import ALL, MATCH, Input, Output, State, callback, ctx, dcc, html
 from dash.exceptions import PreventUpdate
 
+from dash_server_file_browser.util.filetype import get_file_type
+
 
 @dataclass
 class FileBrowserAIOCallbackConfig:
@@ -315,18 +317,32 @@ class FileBrowserAIO(html.Div):
         return html.Ul(
             [
                 html.Li(
-                    html.A(
-                        str(sub_dir.name),
-                        style={"fontWeight": "bold"},
-                        id=FileBrowserAIO.IDs.clickable_file_item(
-                            aio_config.aio_id, path=str(sub_dir)
+                    [
+                        html.I(className="fa-regular fa-folder pe-2"),
+                        html.A(
+                            str(sub_dir.name),
+                            style={"fontWeight": "bold"},
+                            id=FileBrowserAIO.IDs.clickable_file_item(
+                                aio_config.aio_id, path=str(sub_dir)
+                            ),
+                            href="#",
                         ),
-                        href="#",
-                    )
+                    ]
                 )
                 for sub_dir in sub_directories
             ]
-            + [html.Li(str(file.name)) for file in files]
+            + [
+                html.Li(
+                    [
+                        html.I(className=f"fa-regular {get_file_type(file)} pe-2"),
+                        html.Span(file.name),
+                    ]
+                )
+                for file in files
+            ],
+            style={
+                "listStyleType": "none",
+            },
         )
 
     @callback(

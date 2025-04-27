@@ -1,6 +1,6 @@
 [project]
 name = "dash-server-file-browser"
-version = "0.1.0"
+version = "0.2.0.dev0"
 description = "All-in-one file browser component for ``Dash`` applications based on ``Dash Bootstrap Components``."
 authors = [{ name = "Jannik Hinrichs", email = "Zoraiyo@outlook.de" }]
 readme = "README.md"
