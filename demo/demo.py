@@ -1,12 +1,28 @@
 from pathlib import Path
 
 import dash_bootstrap_components as dbc
-from dash import Dash, Input, Output, callback, html
+from dash import Dash, Input, Output, callback, clientside_callback, html
 from dash.exceptions import PreventUpdate
 
 from dash_server_file_browser import FileBrowserAIO, __version__
 
-if __name__ == "__main__":
+clientside_callback(
+    """
+    (switchOn) => {
+        document.documentElement.setAttribute(
+            "data-bs-theme",
+            switchOn ? "light" : "dark"
+        );
+        return window.dash_clientside.no_update
+    }
+    """,
+    Output("switch", "id"),
+    Input("switch", "value"),
+)
+
+
+def main():
+    """Main function to the `dash-server-file-browser` demo."""
     app = Dash(
         __name__,
         external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.FONT_AWESOME],
@@ -18,6 +34,19 @@ if __name__ == "__main__":
             dbc.Stack(
                 [
                     html.H1(f"Demo: dash-server-file-browser v{__version__}"),
+                    html.Span(
+                        [
+                            dbc.Label(className="fa fa-moon", html_for="switch"),
+                            dbc.Switch(
+                                id="switch",
+                                value=True,
+                                className="d-inline-block ms-1",
+                                persistence=True,
+                            ),
+                            dbc.Label(className="fa fa-sun", html_for="switch"),
+                        ],
+                        className="mx-auto",
+                    ),
                 ],
                 direction="horizontal",
             ),
@@ -31,6 +60,9 @@ if __name__ == "__main__":
             FileBrowserAIO(
                 aio_id="demo",
                 base_path=(Path(__file__).parent).as_posix(),
+                modal_props={
+                    "centered": True,
+                },
             ),
         ],
         class_name="p-3",
@@ -55,3 +87,7 @@ if __name__ == "__main__":
         return True
 
     app.run(debug=True)
+
+
+if __name__ == "__main__":
+    main()
