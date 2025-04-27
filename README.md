@@ -2,27 +2,28 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-`dash-server-file-browser` provides a simple AIO component for [Dash](https://github.com/plotly/dash) applications to browse directories and files on the server.
+*dash-server-file-browser* provides a simple AIO component for [Dash](https://github.com/plotly/dash) applications to browse directories and files on the server.
 The componennt is implemented as a `Modal` component of [dash-bootstrap-components](https://github.com/facultyai/dash-bootstrap-components).
+
+![dash-server-file-browser-demo](https://raw.githubusercontent.com/Zoraiyo/dash-server-file-browser/main/docs/images/demo.png)
 
 ## Features
 
-The current version of `dash-server-file-browser` supports the following features:
+The current version of *dash-server-file-browser* supports the following features:
 
 - Browsing the configured "base" directory and all its subdirectories
   - Users cannot navigate outside the defined "base" directory
 - Selecting the current directory as component "output" via a `dcc.Store` component
 - Two navigation buttons:
   - "Up" button to navigate to the parent directory
-  - "Base" button to navigate to the base directory
+  - "Home" button to navigate to the base directory
 - Option to display the current path as either a *relative* or *absolute* path
 
 ## Installation
 
-To install `dash-server-file-browser`, use pip:
+Install *dash-server-file-browser* from [PyPI](https://pypi.org/project/dash-server-file-browser/) using pip:
 
-```bash
-# Install the package from PyPI
+```sh
 pip install dash-server-file-browser
 ```
 
@@ -38,4 +39,4 @@ Contributions are welcome! If you encounter any issues or have feature requests,
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/Zoraiyo/dash-server-file-browser/blob/main/LICENSE) file for details.
